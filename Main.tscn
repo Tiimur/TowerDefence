@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc4giyvo3u2w8"]
+
+[ext_resource type="PackedScene" uid="uid://2ut8jchjwnf1" path="res://Tiles/TileMap.tscn" id="1_7dyn1"]
+[ext_resource type="Script" path="res://PathSpawner.gd" id="2_qixcj"]
+[ext_resource type="PackedScene" uid="uid://dnio3xk4o8bv8" path="res://Towers/RedBulletTower.tscn" id="3_mcfcx"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_7dyn1")]
+
+[node name="PathSpawner" type="Node2D" parent="."]
+script = ExtResource("2_qixcj")
+
+[node name="Timer" type="Timer" parent="PathSpawner"]
+autostart = true
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="RedBulletTower" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(904, 736)
+
+[node name="RedBulletTower2" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(760, 584)
+
+[node name="RedBulletTower5" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(2896, 960)
+
+[node name="RedBulletTower3" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(1088, 440)
+
+[node name="RedBulletTower4" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(3040, 1112)
+
+[node name="RedBulletTower6" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(3224, 816)
+
+[node name="RedBulletTower7" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(1976, 1656)
+
+[node name="RedBulletTower8" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(1832, 1504)
+
+[node name="RedBulletTower9" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(2160, 1360)
+
+[node name="RedBulletTower10" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(1248, 1672)
+
+[node name="RedBulletTower11" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(1104, 1520)
+
+[node name="RedBulletTower12" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(1432, 1376)
+
+[node name="RedBulletTower13" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(1688, 1008)
+
+[node name="RedBulletTower14" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(1544, 856)
+
+[node name="RedBulletTower15" parent="Towers" instance=ExtResource("3_mcfcx")]
+position = Vector2(1872, 712)
+
+[connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]

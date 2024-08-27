@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://crrpfdj7prbq0"]
+
+[ext_resource type="Script" path="res://Mobs/PathSoliderA.gd" id="1_2dqcq"]
+[ext_resource type="PackedScene" uid="uid://bm32drfjd23mn" path="res://Mobs/SoliderA.tscn" id="1_xecip"]
+
+[sub_resource type="Curve2D" id="Curve2D_3fojw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 192, -0.1442, -0.0909605, 0.1442, 0.0909605, 232, 256, -0.00965929, -0.00377321, 0.00965929, 0.00377321, 384, 320, 0, 0, 0, 0, 1064, 616, -0.0177457, 0.00236117, 0.0177457, -0.00236117, 1328, 664, 0, 0, 0, 0, 1664, 768, -0.0199248, -0.0246277, 0.0199248, 0.0246277, 1688, 800, 0, 0, 0, 0, 1688, 864, 24.1549, -17.5827, -24.1549, 17.5827, 1656, 1064, 0, 0, 0, 0, 1408, 1080, 0, 0, 0, 0, 1128, 1016, 0, 0, 0, 0, 1112, 1008, 35.7541, -30.2894, -35.7541, 30.2894, 968, 1016, 0.00713515, 0.00542235, -0.00713515, -0.00542235, 944, 1200, -14.936, -16.1747, 14.936, 16.1747, 1000, 1616, -12.6264, -7.30522, 12.6264, 7.30522, 1088, 1624, -22.1441, -2.34826, 22.1441, 2.34826, 1528, 1640, -0.0151982, -0.0238596, 0.0151982, 0.0238596, 2048, 1600, 0, 0, 0, 0, 2048, 1600, -20.963, 2.69666, 20.963, -2.69666, 2686.32, 1027.58, -53.3676, 5.13874, 53.3676, -5.13874, 3344, 984, 0, 0, 0, 0, 3576, 832)
+}
+point_count = 22
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_3fojw")
+script = ExtResource("1_2dqcq")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, 192)
+rotation = 0.269167
+loop = false
+
+[node name="SoliderA" parent="PathFollow2D" instance=ExtResource("1_xecip")]
+rotation = -0.129703
+script = null

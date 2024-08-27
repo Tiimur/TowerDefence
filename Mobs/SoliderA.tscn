@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm32drfjd23mn"]
+
+[ext_resource type="Texture2D" uid="uid://dbfspariweuj2" path="res://tower-defense-top-down/PNG/DefaultSize/towerDefense_tile245.png" id="1_7kl1o"]
+
+[sub_resource type="GDScript" id="GDScript_ghtn1"]
+script/source = "extends CharacterBody2D
+
+
+@export var speed = 300 # скорость моба - солдата
+
+func _process(delta: float) -> void:
+	# устанавливаем значение (set_progress())
+	# свойству progress экземпляра PathFollow2D, который получаем через get_parent()
+	# результатом суммы текущего значения progress - get_progress()
+	# и производения заданной скорости - speed на количество миллисекунд,
+	# пройденной с прошлого фрейма (вызова текущего метода _process) - delta
+	get_parent().set_progress(get_parent().get_progress() + speed * delta)
+	
+	# путь PathFollow2D считается пройденным, когда свойство progress_ratio имеет значение 1,
+	# в допустимом диапозоне 0 - 1
+	# как только путь был окончен - вызывается безопасный метод удаления узла, который очистит узел
+	# в конце текущего фрейма
+	# таким образом, как только наш 2D спрайт пройдёт PathFollow до конца - он будет удалён
+	if get_parent().progress_ratio == 1:
+		queue_free()
+	
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cuhpn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6l2uq"]
+bg_color = Color(0.917647, 0, 0.270588, 1)
+
+[node name="SoliderA" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = SubResource("GDScript_ghtn1")
+
+[node name="TowerDefenseTile245" type="Sprite2D" parent="."]
+texture = ExtResource("1_7kl1o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.01, 0.01)
+shape = SubResource("CircleShape2D_cuhpn")
+
+[node name="ScaleOfHealth" type="ProgressBar" parent="."]
+offset_left = -11.6667
+offset_top = -22.6663
+offset_right = 31.3333
+offset_bottom = 4.33367
+scale = Vector2(0.539871, 0.318196)
+theme_override_styles/fill = SubResource("StyleBoxFlat_6l2uq")
+step = 1.0
+show_percentage = false
